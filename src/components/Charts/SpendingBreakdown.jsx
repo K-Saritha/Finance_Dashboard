@@ -14,7 +14,8 @@ const COLORS = [
 ];
 
 const SpendingBreakdown = () => {
-  const { transactions } = useFinance();
+  const { transactions, theme } = useFinance();
+  const isDark = theme === 'dark';
 
   const expenseByCategory = transactions
     .filter((tx) => tx.type === 'expense')
@@ -29,11 +30,11 @@ const SpendingBreakdown = () => {
   }));
 
   return (
-    <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm h-[400px] flex flex-col">
+    <div className="bg-surface p-6 rounded-2xl border border-border-dim shadow-sm h-[400px] flex flex-col transition-colors">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h3 className="text-lg font-bold text-slate-800 tracking-tight">Spending Analysis</h3>
-          <p className="text-sm text-slate-500">Expenses categorized by type</p>
+          <h3 className="text-lg font-bold text-foreground tracking-tight">Spending Analysis</h3>
+          <p className="text-sm text-muted">Expenses categorized by type</p>
         </div>
       </div>
       
@@ -53,19 +54,31 @@ const SpendingBreakdown = () => {
                 ))}
               </Pie>
               <Tooltip 
-                contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                contentStyle={{ 
+                  backgroundColor: isDark ? '#1e293b' : '#ffffff', 
+                  borderRadius: '12px', 
+                  border: isDark ? '1px solid #334155' : 'none', 
+                  boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+                  color: isDark ? '#f1f5f9' : '#1e293b'
+                }}
+                itemStyle={{ color: isDark ? '#f1f5f9' : '#1e293b' }}
               />
               <Legend 
                 verticalAlign="bottom" 
                 height={36} 
                 iconType="circle"
-                wrapperStyle={{ paddingTop: '20px', fontSize: '12px', fontWeight: 600, color: '#64748b' }}
+                wrapperStyle={{ 
+                  paddingTop: '20px', 
+                  fontSize: '12px', 
+                  fontWeight: 600, 
+                  color: isDark ? '#94a3b8' : '#64748b' 
+                }}
               />
             </PieChart>
           </ResponsiveContainer>
         ) : (
-          <div className="flex flex-col items-center justify-center text-slate-400 gap-4">
-            <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center border border-dashed border-slate-200">
+          <div className="flex flex-col items-center justify-center text-muted gap-4">
+            <div className="w-16 h-16 bg-background rounded-full flex items-center justify-center border border-dashed border-border-dim">
                <span className="text-xl">📊</span>
             </div>
             <p className="text-sm font-medium">No expense data available</p>

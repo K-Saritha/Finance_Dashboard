@@ -12,7 +12,8 @@ import {
 import { format, parseISO, subDays } from 'date-fns';
 
 const BalanceTrend = () => {
-  const { transactions } = useFinance();
+  const { transactions, theme } = useFinance();
+  const isDark = theme === 'dark';
 
   // Generate data for the last 7 days
   const data = Array.from({ length: 7 }, (_, i) => {
@@ -41,20 +42,20 @@ const BalanceTrend = () => {
   });
 
   return (
-    <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm h-[400px] flex flex-col">
+    <div className="bg-surface p-6 rounded-2xl border border-border-dim shadow-sm h-[400px] flex flex-col transition-colors">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-lg font-bold text-slate-800 tracking-tight">Financial Trend</h3>
-          <p className="text-sm text-slate-500">Daily performance for the last 7 days</p>
+          <h3 className="text-lg font-bold text-foreground tracking-tight">Financial Trend</h3>
+          <p className="text-sm text-muted">Daily performance for the last 7 days</p>
         </div>
         <div className="flex gap-4">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
-            <span className="text-xs font-semibold text-slate-500 uppercase">Income</span>
+            <span className="text-xs font-semibold text-muted uppercase">Income</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-indigo-600"></div>
-            <span className="text-xs font-semibold text-slate-500 uppercase">Expense</span>
+            <span className="text-xs font-semibold text-muted uppercase">Expense</span>
           </div>
         </div>
       </div>
@@ -75,21 +76,28 @@ const BalanceTrend = () => {
                 <stop offset="95%" stopColor="#4f46e5" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={isDark ? '#334155' : '#f1f5f9'} />
             <XAxis 
               dataKey="name" 
               axisLine={false} 
               tickLine={false} 
-              tick={{ fill: '#64748b', fontSize: 11, fontWeight: 600 }}
+              tick={{ fill: isDark ? '#94a3b8' : '#64748b', fontSize: 11, fontWeight: 600 }}
               dy={10}
             />
             <YAxis 
                axisLine={false} 
                tickLine={false} 
-               tick={{ fill: '#64748b', fontSize: 11, fontWeight: 600 }}
+               tick={{ fill: isDark ? '#94a3b8' : '#64748b', fontSize: 11, fontWeight: 600 }}
             />
             <Tooltip 
-              contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+              contentStyle={{ 
+                backgroundColor: isDark ? '#1e293b' : '#ffffff', 
+                borderRadius: '12px', 
+                border: isDark ? '1px solid #334155' : 'none', 
+                boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+                color: isDark ? '#f1f5f9' : '#1e293b'
+              }}
+              itemStyle={{ color: isDark ? '#f1f5f9' : '#1e293b' }}
             />
             <Area
               type="monotone"

@@ -32,15 +32,15 @@ const Insights = () => {
         ? `You spend the most on ${highestCategory[0]} ($${highestCategory[1].toLocaleString()}).` 
         : "No expense data yet.",
       icon: TrendingUp,
-      color: 'text-amber-600',
-      bgColor: 'bg-amber-50',
+      color: 'text-amber-600 dark:text-amber-400',
+      bgColor: 'bg-amber-50 dark:bg-amber-500/10',
     },
     {
       title: 'Monthly Savings Rate',
       description: `Your current savings rate is ${savingsRate.toFixed(1)}%. ${savingsRate > 20 ? 'Great job!' : 'Try to save more.'}`,
       icon: CheckCircle2,
-      color: 'text-emerald-600',
-      bgColor: 'bg-emerald-50',
+      color: 'text-emerald-600 dark:text-emerald-400',
+      bgColor: 'bg-emerald-50 dark:bg-emerald-500/10',
     },
     {
       title: 'Spending Pattern',
@@ -48,21 +48,21 @@ const Insights = () => {
         ? "Warning: Your expenses are reaching 80% of your income." 
         : "Your spending is well within your budget.",
       icon: AlertCircle,
-      color: totalExpense > totalIncome * 0.8 ? 'text-rose-600' : 'text-indigo-600',
-      bgColor: totalExpense > totalIncome * 0.8 ? 'bg-rose-50' : 'bg-indigo-50',
+      color: totalExpense > totalIncome * 0.8 ? 'text-rose-600 dark:text-rose-400' : 'text-indigo-600 dark:text-indigo-400',
+      bgColor: totalExpense > totalIncome * 0.8 ? 'bg-rose-50 dark:bg-rose-500/10' : 'bg-indigo-50 dark:bg-indigo-500/10',
     }
   ];
 
   return (
-    <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm mb-10 overflow-hidden relative">
-      <div className="absolute top-0 right-0 p-8 text-indigo-50/50">
+    <div className="bg-surface p-6 rounded-2xl border border-border-dim shadow-sm mb-10 overflow-hidden relative transition-colors">
+      <div className="absolute top-0 right-0 p-8 text-indigo-50/50 dark:text-indigo-500/10">
         <Lightbulb size={120} />
       </div>
       
       <div className="relative z-10">
         <div className="flex items-center gap-2 mb-6">
-          <Lightbulb className="text-indigo-600" size={24} />
-          <h3 className="text-lg font-bold text-slate-800">Smart Insights</h3>
+          <Lightbulb className="text-indigo-600 dark:text-indigo-400" size={24} />
+          <h3 className="text-lg font-bold text-foreground">Smart Insights</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -72,8 +72,8 @@ const Insights = () => {
                 <insight.icon size={20} />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-800 mb-1">{insight.title}</h4>
-                <p className="text-xs text-slate-500 leading-relaxed font-medium">{insight.description}</p>
+                <h4 className="text-sm font-bold text-foreground mb-1">{insight.title}</h4>
+                <p className="text-xs text-muted leading-relaxed font-medium">{insight.description}</p>
               </div>
             </div>
           ))}
