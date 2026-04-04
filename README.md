@@ -1,16 +1,71 @@
-# React + Vite
+# Modern Finance Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek, professional finance management dashboard built with React, Tailwind CSS 4, and Recharts. This application provides a comprehensive overview of financial transactions, income/expense trends, and actionable insights.
 
-Currently, two official plugins are available:
+[![Live Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://finance-dashboard-mu-lac.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- **🌓 Dynamic Dark Mode**: Seamlessly switch between light and dark themes with system preference detection and local storage persistence.
+- **🔐 Role-Based Access**: Toggle between 'Admin' (can add/delete records) and 'Viewer' (read-only) modes.
+- **📊 Interactive Data Visualization**:
+  - **Daily Balance Trend**: Area chart showing income vs. expense over the last 7 days.
+  - **Spending Breakdown**: Pie chart showing expense distribution by category.
+- **⚡ Smart Insights**: Automated analysis of spending patterns, top categories, and savings rates.
+- **🧾 Transaction Management**: Search, filter by type (Income/Expense), and manage records with a clean, responsive table.
+- **📱 Fully Responsive**: Optimized for desktop, tablet, and mobile views.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **Core**: [React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS 4.0](https://tailwindcss.com/)
+- **State Management**: React Context API
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Charts**: [Recharts](https://recharts.org/)
+- **Date Utilities**: [date-fns](https://date-fns.org/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd finance_app
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**:
+   ```bash
+   npm run build
+   ```
+
+## 📂 Project Structure
+
+```text
+src/
+├── components/      # UI Components (Layout, Charts, Modals, etc.)
+├── context/         # FinanceContext for global state & theme management
+├── data/            # Mock transaction data and constants
+├── assets/          # Static assets
+├── App.jsx          # Main application entry
+└── index.css        # Global styles and Tailwind 4 theme configuration
+```
+
+
+---
+*Created as a professional finance dashboard assignment.*
