@@ -67,5 +67,3 @@ src/
 ```
 
 
----
-*Created as a professional finance dashboard assignment.*
