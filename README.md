@@ -12,7 +12,7 @@ A sleek, professional finance management dashboard built with React, Tailwind CS
   - **Daily Balance Trend**: Area chart showing income vs. expense over the last 7 days.
   - **Spending Breakdown**: Pie chart showing expense distribution by category.
 - **⚡ Smart Insights**: Automated analysis of spending patterns, top categories, and savings rates.
-- **🧾 Transaction Management**: Search, filter by type (Income/Expense), and manage records with a clean, responsive table.
+- **🧾 Transaction Management**: Search, filter by type (Income/Expense/Category/Date), and manage records with a clean, responsive table.
 - **📱 Fully Responsive**: Optimized for desktop, tablet, and mobile views.
 
 ## 🛠️ Tech Stack
